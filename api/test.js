@@ -7,7 +7,7 @@ const handler = async (req, res) => {
   try {
     // Отримання даних з тіла запиту, які містяться в полі email
     const { email } = req.body;
-
+    console.log('Received email:', email);
     // Перевірка чи є електронна пошта у тілі запиту
     if (!email) {
       return res.status(400).json({ error: 'Email is required' });
