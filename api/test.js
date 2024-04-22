@@ -17,10 +17,11 @@ const handler = async (req, res) => {
 
     // Виконання POST запиту на test.com з використанням axios та тілом запиту
     await axios.get('https://api.webflow.com/v2/collections/662668afb17cfdeddcaffbee/items', 
-    { "Email": email, 
-    fieldData: {
-      "name": "dsvsdv"
-    } 
+    {
+      "email": email,
+      "fieldData": {
+          "name": "dsvsdv"
+      }
     }, 
     {
       headers: {
