@@ -1,13 +1,13 @@
 {
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/api/(.*)", "dest": "/api/vercel.js" }
+    { "src": "/api/(.*)", "dest": "/api/main.js" }
   ],
 
   "functions": {
     "index": {
       "handler": "index.handler",
-      "runtime": "nodejs14.x"
+      "runtime": "nodejs21.x"
     }
   },
   "rewrites": [
