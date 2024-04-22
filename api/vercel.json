@@ -2,5 +2,15 @@
   "routes": [
     { "handle": "filesystem" },
     { "src": "/api/(.*)", "dest": "/api/vercel.js" }
+  ],
+
+  "functions": {
+    "index": {
+      "handler": "index.handler",
+      "runtime": "nodejs14.x"
+    }
+  },
+  "rewrites": [
+    { "source": "/", "destination": "/index" }
   ]
 }
