@@ -4,17 +4,32 @@ const API_KEY = 'f43dca3cc3adf948f925bbaca319b0200f77d502ae3eb69cf9b3101f1c99977
 const COLLECTION_ID = '662668afb17cfdeddcaffbee';
 
 const handler = async (req, res) => {
-  console.log("hello"); // Вивести "hello" у консоль
   try {
-    const response = await axios.get(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/662668afb17cfdeddcaffd85`, {
-      headers: {
-        'Authorization': `Bearer ${API_KEY}`
-      }
-    });
-    res.status(200).json(response.data); // Повернення даних як відповідь
+    // Отримання даних з тіла запиту, які містяться в полі email
+    const { email } = req.body;
+
+    // Перевірка чи є електронна пошта у тілі запиту
+    if (!email) {
+      return res.status(400).json({ error: 'Email is required' });
+    }
+
+    // Вивід електронної пошти в консоль
+    console.log('Received email:', email);
+
+    // Виконання запиту до API Webflow для отримання даних
+    // const response = await axios.get(`https://api.webflow.com/collections/${COLLECTION_ID}/items`, {
+    //   headers: {
+    //     'Authorization': `Bearer ${API_KEY}`
+    //   }
+    // });
+
+    // Відправлення отриманих даних як відповідь
+    res.status(200).json(response.data);
   } catch (error) {
-    res.status(error.response.status).json({ error: error.message }); // Повернення помилки як відповідь
+    // Відправлення помилки як відповідь у разі виникнення помилки
+    res.status(500).json({ error: error.message });
   }
 };
 
 module.exports = handler;
+
