@@ -1,7 +1,7 @@
 {
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/api/(.*)", "dest": "/api/test.js" }
+    { "src": "/api/(.*)", "dest": "test.js" }
   ],
 
   "functions": {
