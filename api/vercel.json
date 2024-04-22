@@ -7,7 +7,7 @@
   "functions": {
     "index": {
       "handler": "index.handler",
-      "runtime": "nodejs21.x"
+      "runtime": "nodejs14.x"
     }
   },
   "rewrites": [
