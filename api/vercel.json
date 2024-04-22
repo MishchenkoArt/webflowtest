@@ -1,5 +1,6 @@
 {
-  "routes":[
-    {"src":"/","dest":"/api/vercel.js","methods":["POST", "GET"]}
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/api/(.*)", "dest": "/api/vercel.js" }
   ]
 }
