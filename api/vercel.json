@@ -1,7 +1,7 @@
 {
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/api/(.*)", "dest": "/api/vercel.js" }
+    { "src": "/api/(.*)", "dest": "/api/test.js" }
   ],
 
   "functions": {
