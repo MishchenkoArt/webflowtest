@@ -9,7 +9,6 @@ const handler = async (req, res) => {
     const { email } = req.body;
     // Перевірка чи є електронна пошта у тілі запиту
     if (!email) {
-      console.log("there")
       return res.status(400).json({ error: 'Email is required' });
     }
 
@@ -18,7 +17,11 @@ const handler = async (req, res) => {
 
     // Виконання POST запиту на test.com з використанням axios та тілом запиту
     await axios.get('https://api.webflow.com/v2/collections/662668afb17cfdeddcaffbee/items', 
-
+    { "Email": email, 
+    fieldData: {
+      "name": "dsvsdv"
+    } 
+    }, 
     {
       headers: {
         'Authorization': `Bearer ${API_KEY}`,
