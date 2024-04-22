@@ -16,15 +16,8 @@ const handler = async (req, res) => {
     // Вивід електронної пошти в консоль
     console.log('Received email:', email);
 
-    // Виконання запиту до API Webflow для отримання даних
-    // const response = await axios.get(`https://api.webflow.com/collections/${COLLECTION_ID}/items`, {
-    //   headers: {
-    //     'Authorization': `Bearer ${API_KEY}`
-    //   }
-    // });
-
-    // Відправлення отриманих даних як відповідь
-    res.status(200).json(response.data);
+    // Повернення отриманої електронної пошти як відповідь
+    res.status(200).json({ email });
   } catch (error) {
     // Відправлення помилки як відповідь у разі виникнення помилки
     res.status(500).json({ error: error.message });
@@ -32,4 +25,3 @@ const handler = async (req, res) => {
 };
 
 module.exports = handler;
-
