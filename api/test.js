@@ -25,7 +25,7 @@ const handler = async (req, res) => {
     }, 
     {
       headers: {
-        'Authorization': `Bearer ${API_KEY}`,
+        'Authorization': 'f43dca3cc3adf948f925bbaca319b0200f77d502ae3eb69cf9b3101f1c999771',
         'Content-Type': 'application/json'
       }
     });
