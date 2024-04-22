@@ -5,7 +5,16 @@ const COLLECTION_ID = '662668afb17cfdeddcaffbee';
 
 const handler = async (req, res) => {
   console.log("hello"); // Вивести "hello" у консоль
-  res.status(200).json({ message: "hello" }); // Повернення "hello" як відповідь
+  try {
+    const response = await axios.get(`https://api.webflow.com/collections/${COLLECTION_ID}/items`, {
+      headers: {
+        'Authorization': `Bearer ${API_KEY}`
+      }
+    });
+    res.status(200).json(response.data); // Повернення даних як відповідь
+  } catch (error) {
+    res.status(error.response.status).json({ error: error.message }); // Повернення помилки як відповідь
+  }
 };
 
 module.exports = handler;
