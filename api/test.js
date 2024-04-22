@@ -6,7 +6,7 @@ const COLLECTION_ID = '662668afb17cfdeddcaffbee';
 const handler = async (req, res) => {
   console.log("hello"); // Вивести "hello" у консоль
   try {
-    const response = await axios.get(`https://api.webflow.com/collections/${COLLECTION_ID}/items`, {
+    const response = await axios.get(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items`, {
       headers: {
         'Authorization': `Bearer ${API_KEY}`
       }
