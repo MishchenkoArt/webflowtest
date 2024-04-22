@@ -9,6 +9,7 @@ const handler = async (req, res) => {
     const { email } = req.body;
     // Перевірка чи є електронна пошта у тілі запиту
     if (!email) {
+      console.log("there")
       return res.status(400).json({ error: 'Email is required' });
     }
 
