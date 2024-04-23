@@ -40,7 +40,7 @@ const handler = async (req, res) => {
 
     const item_id = response.data.id;
     
-   await axios.put(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/${item_id}`, 
+   await axios.patch(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/${item_id}/live`, 
     {
       
       "fieldData": {
