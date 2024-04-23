@@ -31,7 +31,7 @@ const handler = async (req, res) => {
     });
 
     // Відправлення відповіді клієнту
-    res.status(200).json({ email });
+    res.status(200).json({ items });
   } catch (error) {
     // Відправлення помилки як відповідь у разі виникнення помилки
     res.status(500).json({ error: error.message });
