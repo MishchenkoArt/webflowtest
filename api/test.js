@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 
-const API_KEY = 'f43dca3cc3adf948f925bbaca319b0200f77d502ae3eb69cf9b3101f1c999771';
+const API_KEY = process.env.API_KEY;
 const COLLECTION_ID = '662668afb17cfdeddcaffbee';
 
 const handler = async (req, res) => {
@@ -31,7 +31,7 @@ const handler = async (req, res) => {
     });
 
     // Відправлення відповіді клієнту
-    res.status(200).json(response.data);
+    res.status(200).json(API_KEY);
   } catch (error) {
     // Відправлення помилки як відповідь у разі виникнення помилки
     res.status(500).json({ error: error.message });
