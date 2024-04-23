@@ -19,8 +19,9 @@ const handler = async (req, res) => {
     // Виконання POST запиту на test.com з використанням axios та тілом запиту
     const response = await axios.post(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/live`, 
     {
-      "email": email,
+      
       "fieldData": {
+         "email": email,
           "slug": "gred",
           "name": "gred",
           "_archived": false,
