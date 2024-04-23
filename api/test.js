@@ -38,6 +38,8 @@ app.post('/api/proxy-to-zdorovistosunky', async (req, res) => {
   }
 });
 
+
+
 // Прослуховуємо порт 3000
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
