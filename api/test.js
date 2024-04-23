@@ -16,7 +16,7 @@ const handler = async (req, res) => {
     console.log('Received email:', email);
 
     // Виконання POST запиту на test.com з використанням axios та тілом запиту
-    const response = await axios.get(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items`, 
+    const response = await axios.get('https://api.webflow.com/v2/collections/'+ COLLECTION_ID +'/items', 
    // {
       //"email": email,
       // "fieldData": {
