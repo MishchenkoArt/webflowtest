@@ -16,7 +16,7 @@ const handler = async (req, res) => {
     console.log('Received email:', email);
 
     // Виконання POST запиту на test.com з використанням axios та тілом запиту
-    await axios.get('https://api.webflow.com/v2/collections/662668afb17cfdeddcaffc08/items', 
+    const response=await axios.get('https://api.webflow.com/v2/collections/662668afb17cfdeddcaffc08/items', 
    // {
       //"email": email,
       // "fieldData": {
@@ -31,7 +31,7 @@ const handler = async (req, res) => {
     });
 
     // Відправлення відповіді клієнту
-    res.status(200).json({ items });
+    res.status(200).json(response);
   } catch (error) {
     // Відправлення помилки як відповідь у разі виникнення помилки
     res.status(500).json({ error: error.message });
