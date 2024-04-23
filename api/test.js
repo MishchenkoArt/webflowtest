@@ -1,4 +1,3 @@
-const axios = require('axios').default;
 const express = require('express');
 const bodyParser = require('body-parser');
 
