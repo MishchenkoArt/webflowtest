@@ -13,10 +13,7 @@ const handler = async (req, res) => {
       return res.status(400).json({ error: 'Email is required' });
     }
 
-    console.log('Received email:', email);
-    console.log(COLLECTION_ID, API_KEY);
-
-    // Перевірка чи існує вже електронна адреса в колекції Webflow
+      // Перевірка чи існує вже електронна адреса в колекції Webflow
     const existingEmailResponse = await axios.get(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items`, {
       headers: {
         'Authorization': `Bearer ${API_KEY}`,
@@ -26,8 +23,10 @@ const handler = async (req, res) => {
 
     // Перевірка, чи електронна адреса вже існує в колекції
     const existingEmail = existingEmailResponse.data.items.some(item => item.fieldData.email === email);
+    console.log(existingEmail)
     if (existingEmail) {
-      return res.status(400).json({ error: 'Email already exists' });
+      console.log("yes")
+      return res.redirect('www.zdorovistosunky.org/users/'+ name + '/');
     }
 
     // Якщо електронної адреси ще не існує, виконати POST запит для додавання нового запису
