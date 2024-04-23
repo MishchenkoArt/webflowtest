@@ -17,12 +17,12 @@ const handler = async (req, res) => {
     console.log (COLLECTION_ID, + " "+ API_KEY)
 
     // Виконання POST запиту на test.com з використанням axios та тілом запиту
-    const response = await axios.post(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items`, 
+    const response = await axios.post(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/live`, 
     {
-      "email": "testArtem@gmail.dder",
+      "email": email,
       "fieldData": {
-          "slug": "tema19",
-          "name": "tema1992",
+          "slug": "gred",
+          "name": "gred",
           "_archived": false,
           "_draft": false
       }
