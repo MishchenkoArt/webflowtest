@@ -40,23 +40,19 @@ const handler = async (req, res) => {
 
     const item_id = response.data.id;
     
-  //  await axios.put(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/live`, 
-  //   {
+   await axios.put(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/${item_id}`, 
+    {
       
-  //     "fieldData": {
-  //        "email": email,
-  //         "slug": name,
-  //         "name": name,
-  //         "_archived": false,
-  //         "_draft": false
-  //     }
-  // }, 
-  //   {
-  //     headers: {
-  //       'Authorization': API_KEY,
-  //       'Content-Type': 'application/json'
-  //     }
-  //   });
+      "fieldData": {
+         "ID_field": item_id,
+      }
+  }, 
+    {
+      headers: {
+        'Authorization': API_KEY,
+        'Content-Type': 'application/json'
+      }
+    });
 
     // Відправлення відповіді клієнту
     res.status(200).json(item_id);
