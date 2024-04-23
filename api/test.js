@@ -19,9 +19,9 @@ const handler = async (req, res) => {
     await axios.post('https://api.webflow.com/v2/collections/662668afb17cfdeddcaffbee/items', 
     {
       "email": email,
-      "fieldData": {
-          "name": "dsvsdv"
-      }
+      // "fieldData": {
+      //     "name": "dsvsdv"
+      // }
     }, 
     {
       headers: {
