@@ -26,7 +26,7 @@ const handler = async (req, res) => {
     console.log(existingEmail)
     if (existingEmail) {
       console.log("yes")
-      return res.redirect('www.zdorovistosunky.org/users/'+ name + '/');
+      return res.redirect(`https://www.zdorovistosunky.org/users/${slug}`);
     }
 
     // Якщо електронної адреси ще не існує, виконати POST запит для додавання нового запису
