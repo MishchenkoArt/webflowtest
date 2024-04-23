@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 const API_KEY = process.env.API_KEY;
-const COLLECTION_ID = process.env.COLL_KEY;
+const COLLECTION_ID = process.env.COLL_ID;
 
 const handler = async (req, res) => {
   try {
@@ -17,7 +17,7 @@ const handler = async (req, res) => {
     console.log (COLLECTION_ID, + " "+ API_KEY)
 
     // Виконання POST запиту на test.com з використанням axios та тілом запиту
-    const response = await axios.get('https://api.webflow.com/v2/collections/'+ COLLECTION_ID +'/items', 
+    const response = await axios.get(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items`, 
    // {
       //"email": email,
       // "fieldData": {
