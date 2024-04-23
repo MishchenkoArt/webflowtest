@@ -44,7 +44,7 @@ const handler = async (req, res) => {
     {
       
       "fieldData": {
-         "ID_field": item_id,
+         "id_field": item_id,
       }
   }, 
     {
