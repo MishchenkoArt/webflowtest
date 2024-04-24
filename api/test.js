@@ -6,8 +6,8 @@ const COLLECTION_ID = process.env.COLL_ID;
 const handler = async (req, res) => {
   try {
     const { email } = req.body;
-    const atIndex = Email.indexOf('@');
-    const name = Email.slice(0, atIndex);
+    const atIndex = email.indexOf('@');
+    const name = email.slice(0, atIndex);
     
    
     if (!email) {
