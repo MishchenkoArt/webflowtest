@@ -1,29 +1,22 @@
 const axios = require('axios').default;
+const express = require('express');
+const cors = require('cors');
 
 const API_KEY = process.env.API_KEY;
 const COLLECTION_ID = process.env.COLL_ID;
 
-const allowCors = fn => async (req, res) => {
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-  }
-  return await fn(req, res);
-};
+const app = express();
 
-const handler = async (req, res) => {
+// Додаємо middleware CORS
+app.use(cors());
+
+// Обробник запиту
+app.post('/your-endpoint', async (req, res) => {
   try {
     const { email } = req.body;
     const atIndex = email.indexOf('@');
     const name = email.slice(0, atIndex);
-    
+
     if (!email) {
       return res.status(400).json({ error: 'Email is required' });
     }
@@ -44,16 +37,14 @@ const handler = async (req, res) => {
     } else {
       console.log("no");
       // Якщо електронної адреси ще не існує, виконати POST запит для додавання нового запису
-      const response = await axios.post(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/live`, 
-      {
+      const response = await axios.post(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/live`, {
         "fieldData": {
           "email": email,
           "name": name,
           "_archived": false,
           "_draft": false
         }
-      },
-      {
+      }, {
         headers: {
           'Authorization': `Bearer ${API_KEY}`,
           'Content-Type': 'application/json'
@@ -63,13 +54,11 @@ const handler = async (req, res) => {
       const item_id = response.data.id;
       const slug = response.data.fieldData.slug;
 
-      await axios.patch(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/${item_id}/live`, 
-      {
+      await axios.patch(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/${item_id}/live`, {
         "fieldData": {
           "id-field": item_id,
         }
-      }, 
-      {
+      }, {
         headers: {
           'Authorization': `Bearer ${API_KEY}`,
           'Content-Type': 'application/json'
@@ -81,6 +70,4 @@ const handler = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-};
-
-module.exports = allowCors(handler);
+});
