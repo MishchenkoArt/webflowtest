@@ -35,7 +35,7 @@ const response = await axios.post(`https://api.webflow.com/v2/collections/${COLL
 {
   "fieldData": {
     "email": email,
-    "slug": "",
+    "slug": "trrr",
     "name": name,
     "_archived": false,
     "_draft": false
