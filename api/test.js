@@ -48,6 +48,7 @@ const handler = async (req, res) => {
       });
 
 const item_id = response.data.id;
+const slug = response.data.fieldData.slug;
 
 await axios.patch(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/${item_id}/live`, 
 {
