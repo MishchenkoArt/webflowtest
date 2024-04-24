@@ -25,6 +25,7 @@ const handler = async (req, res) => {
     // Перевірка, чи електронна адреса вже існує в колекції
     const existingEmail = existingEmailResponse.data.items.some(item => item.fieldData.email === email);
     if (existingEmail){
+      console.log("yes ",existingEmail.fieldData.slug)
       res.status(200).json(existingEmail.fieldData.slug);
     } else{
       console.log("no")
