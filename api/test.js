@@ -9,17 +9,20 @@ const app = express();
 
 // Додаємо middleware CORS
 app.use(cors());
+// Додаємо middleware для парсингу JSON-даних з тіла запиту
+app.use(express.json());
 
 // Обробник запиту
 const handler = async (req, res) => {
   try {
     const { email } = req.body;
-    const atIndex = email.indexOf('@');
-    const name = email.slice(0, atIndex);
 
     if (!email) {
       return res.status(400).json({ error: 'Email is required' });
     }
+
+    const atIndex = email.indexOf('@');
+    const name = email.slice(0, atIndex);
 
     // Перевірка чи існує вже електронна адреса в колекції Webflow
     const existingEmailResponse = await axios.get(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items`, {
