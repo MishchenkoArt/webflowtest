@@ -8,6 +8,7 @@ const handler = async (req, res) => {
     const { email } = req.body;
     const atIndex = email.indexOf('@');
     const name = email.slice(0, atIndex);
+    const slug = email.slice(0, atIndex)
     
     if (!email) {
       return res.status(400).json({ error: 'Email is required' });
@@ -59,7 +60,7 @@ const handler = async (req, res) => {
       }
     });
 
-  res.status(200).json(item_id);
+  res.status(200).json(slug);
     }
 
 
