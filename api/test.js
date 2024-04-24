@@ -18,7 +18,8 @@ const handler = async (req, res) => {
     const existingEmailResponse = await axios.get(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items`, {
       headers: {
         'Authorization': `Bearer ${API_KEY}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
       }
 
     });
@@ -43,7 +44,8 @@ const handler = async (req, res) => {
       {
         headers: {
           'Authorization': `Bearer ${API_KEY}`,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
          }
       });
 
