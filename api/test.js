@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 
 // Обробник запиту
-app.post('/your-endpoint', async (req, res) => {
+const handler = async (req, res) => {
   try {
     const { email } = req.body;
     const atIndex = email.indexOf('@');
@@ -70,4 +70,9 @@ app.post('/your-endpoint', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+};
+
+// Налаштуємо маршрут для обробника
+app.post('/your-endpoint', handler);
+
+module.exports = app;
