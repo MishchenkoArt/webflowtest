@@ -15,14 +15,14 @@ app.use(express.json());
 // Обробник запиту
 const handler = async (req, res) => {
   try {
-    const { email } = req.body;
+    const { Email } = req.body;
 
-    if (!email) {
+    if (!Email) {
       return res.status(400).json({ error: 'Email is required' });
     }
 
-    const atIndex = email.indexOf('@');
-    const name = email.slice(0, atIndex);
+    const atIndex = Email.indexOf('@');
+    const name = Email.slice(0, atIndex);
 
     // Перевірка чи існує вже електронна адреса в колекції Webflow
     const existingEmailResponse = await axios.get(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items`, {
