@@ -8,8 +8,7 @@ const handler = async (req, res) => {
     const { email } = req.body;
     const atIndex = email.indexOf('@');
     const name = email.slice(0, atIndex);
-    const slug = email.slice(0, atIndex)
-    
+   
     if (!email) {
       return res.status(400).json({ error: 'Email is required' });
     }
@@ -28,25 +27,23 @@ const handler = async (req, res) => {
     if (existingEmail){
       res.status(200).json(existingEmail.fieldData.slug);
     } else{
-
       console.log("no")
       // Якщо електронної адреси ще не існує, виконати POST запит для додавання нового запису
-const response = await axios.post(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/live`, 
-{
-  "fieldData": {
-    "email": email,
-    "slug": "trrr",
-    "name": name,
-    "_archived": false,
-    "_draft": false
-  }
-},
-{
-  headers: {
-    'Authorization': `Bearer ${API_KEY}`,
-    'Content-Type': 'application/json'
-  }
-});
+      const response = await axios.post(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/live`, 
+      {
+        "fieldData": {
+          "email": email,
+          "name": name,
+          "_archived": false,
+          "_draft": false
+        }
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${API_KEY}`,
+          'Content-Type': 'application/json'
+         }
+      });
 
 const item_id = response.data.id;
 
