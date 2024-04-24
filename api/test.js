@@ -8,6 +8,7 @@ const handler = async (req, res) => {
     const { email } = req.body;
     const atIndex = email.indexOf('@');
     const name = email.slice(0, atIndex);
+    
    
     if (!email) {
       return res.status(400).json({ error: 'Email is required' });
@@ -26,7 +27,7 @@ const handler = async (req, res) => {
     const existingEmailItem = existingEmailResponse.data.items.find(item => item.fieldData.email === email);
     if (existingEmailItem) {
       console.log("yes ", existingEmailItem.fieldData.slug);
-      res.status(200).json(existingEmailItem.fieldData.slug);
+      return res.status(200).json(existingEmailItem.fieldData.slug);
     } else {
       console.log("no");
       // Якщо електронної адреси ще не існує, виконати POST запит для додавання нового запису
