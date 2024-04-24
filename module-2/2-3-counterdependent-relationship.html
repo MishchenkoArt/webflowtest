@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  Last Published: Tue Apr 23 2024 12:39:44 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  Last Published: Wed Apr 24 2024 10:47:42 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="662668afb17cfdeddcaffc98" data-wf-site="662668afb17cfdeddcaffb95">
 <head>
   <meta charset="utf-8">
@@ -361,6 +361,11 @@
       function verCheck() {
         var LS = localStorage.getItem('UserEmail');
         var Slug = localStorage.getItem('UserSlug');
+        if (window.location.href == "https://webflowtest-mpuw.vercel.app/" && Slug) {
+          window.location.replace("https://webflowtest-mpuw.vercel.app/" + Slug);
+        } else if (window.location.href != "https://webflowtest-mpuw.vercel.app/" && !LS) {
+          window.location.replace("https://webflowtest-mpuw.vercel.app/");
+        }
       }
       window.addEventListener("load", (event) => {
         verCheck();
