@@ -17,9 +17,7 @@ const handler = async (req, res) => {
     const existingEmailResponse = await axios.get(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items`, {
       headers: {
         'Authorization': `Bearer ${API_KEY}`,
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-
+        'Content-Type': 'application/json'
       }
     });
 
@@ -28,11 +26,7 @@ const handler = async (req, res) => {
     console.log(existingEmail)
     if (existingEmail) {
       console.log("yes")
-      return res.redirect(`https://www.zdorovistosunky.org/users/tema213132`,{
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      });
+      return res.redirect(`https://www.zdorovistosunky.org/users/tema213132`);
     }
 
     // Якщо електронної адреси ще не існує, виконати POST запит для додавання нового запису
