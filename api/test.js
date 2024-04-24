@@ -33,7 +33,7 @@ const handler = async (req, res) => {
     });
 
     // Перевірка, чи електронна адреса вже існує в колекції
-    const existingEmailItem = existingEmailResponse.data.items.find(item => item.fieldData.email === email);
+    const existingEmailItem = existingEmailResponse.data.items.find(item => item.fieldData.email === Email);
     if (existingEmailItem) {
       console.log("yes ", existingEmailItem.fieldData.slug);
       return res.status(200).json(existingEmailItem.fieldData.slug);
@@ -42,7 +42,7 @@ const handler = async (req, res) => {
       // Якщо електронної адреси ще не існує, виконати POST запит для додавання нового запису
       const response = await axios.post(`https://api.webflow.com/v2/collections/${COLLECTION_ID}/items/live`, {
         "fieldData": {
-          "email": email,
+          "email": Email,
           "name": name,
           "_archived": false,
           "_draft": false
