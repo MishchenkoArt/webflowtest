@@ -73,6 +73,6 @@ const handler = async (req, res) => {
 };
 
 // Налаштуємо маршрут для обробника
-app.post('/your-endpoint', handler);
+app.post('/api/test', handler);
 
 module.exports = app;
