@@ -34,6 +34,7 @@ const handler = async (req, res) => {
         "fieldData": {
           "email": email,
           "name": name,
+          "slug": "dsdsd",
           "_archived": false,
           "_draft": false
         }
